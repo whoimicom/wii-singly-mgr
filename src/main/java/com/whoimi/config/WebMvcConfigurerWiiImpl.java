@@ -20,7 +20,7 @@ import java.io.File;
 @EnableWebMvc
 public class WebMvcConfigurerWiiImpl implements WebMvcConfigurer {
 
-    @Value("${kim.kin.file-path}")
+    @Value("${com.whoimi.file-path}")
     private String filePath;
 
     @Bean

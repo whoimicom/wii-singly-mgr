@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
+        <version>3.4.0</version>
         <relativePath/>
     </parent>
     <groupId>com.whoimi</groupId>
-    <artifactId>wii-singly-mgr</artifactId>
+    <artifactId>wiic-singly-mgr</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wii-singly-mgr</name>
+    <name>wiic-singly-mgr</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

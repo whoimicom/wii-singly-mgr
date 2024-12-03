@@ -11,7 +11,6 @@ import com.whoimi.model.UserPermissionVO;
 import com.whoimi.service.UserInfoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -27,14 +26,12 @@ import java.util.*;
 @RestController
 @CrossOrigin
 public class AuthenticationController {
-    private final AuthenticationManager authenticationManager;
     private final UserDetailsServiceWiiImpl userDetailsService;
     private final UserInfoService userInfoService;
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
 
     public AuthenticationController(AuthenticationManager authenticationManager, UserDetailsServiceWiiImpl userDetailsService, UserInfoService userInfoService) {
-        this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.userInfoService = userInfoService;
     }
@@ -44,7 +41,6 @@ public class AuthenticationController {
     public void createAuthenticationToken(HttpServletRequest request, HttpServletResponse response, @RequestBody UserInfoDTO userInfoDTO) throws IOException {
         String username = userInfoDTO.getUsername();
         String password = userInfoDTO.getPassword();
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 //        return ResponseEntity.ok(userDetails);
         redirectStrategy.sendRedirect(request, response, "/index.html");

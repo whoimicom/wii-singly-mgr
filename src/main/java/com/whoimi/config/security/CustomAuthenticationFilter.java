@@ -9,11 +9,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * @author: xxm
- * @description:用户名和密码登陆验证的过滤器
- * @date: 2021/3/10 15:04
- */
+
 public class CustomAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     public static final String SPRING_SECURITY_FORM_USERNAME_KEY = "username";
     public static final String SPRING_SECURITY_FORM_PASSWORD_KEY = "password";

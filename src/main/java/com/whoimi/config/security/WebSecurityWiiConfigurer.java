@@ -22,6 +22,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -67,7 +68,7 @@ public class WebSecurityWiiConfigurer {
     @Bean
     public AuthenticationManager authenticationManager() {
         //不擦除认证密码，擦除会导致TokenBasedRememberMeServices因为找不到Credentials再调用UserDetailsService而抛出UsernameNotFoundException
-        return new ProviderManager();
+        return new ProviderManager(daoAuthenticationProvider());
 //        return new ProviderManager(Arrays.asList(EmailCodeAuthenticationToken(), daoAuthenticationProvider()));
     }
 
@@ -88,10 +89,13 @@ public class WebSecurityWiiConfigurer {
     DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
-//        daoAuthenticationProvider.setUserDetailsService(userDetailsServiceImpl);
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService());
         return daoAuthenticationProvider;
     }
-
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new CustomUserServiceImpl(userInfoRepository);
+    }
 
 //    @Bean
 //    public WebSecurityCustomizer webSecurityCustomizer() {

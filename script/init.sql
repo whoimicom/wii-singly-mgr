@@ -1,10 +1,8 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : KINKIM
  Source Server Type    : MySQL
  Source Server Version : 80024
- Source Schema         : kinkim
 
  Target Server Type    : MySQL
  Target Server Version : 80024

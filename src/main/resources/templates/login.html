@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Kin.kim  Management System">
-    <meta name="author" content="kin.kim">
+    <meta name="description" content="whoimi.com  Management System">
+    <meta name="author" content="whoimi.com">
     <meta name="generator" content="Hugo 0.83.1">
     <title>Signin Template · Bootstrap v5.0</title>
     <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}"/>
@@ -63,19 +63,6 @@
             .then(value => {
                 console.log(value)
                 location.href = ctxPath + 'index.html';
-                // fetch('http://localhost:10000/kk-api/index.html', {
-                //     method: 'post',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         Authorization: atoken,
-                //     }
-                // }).then(value1 => {
-                //     // location.href = ctxPath + 'layout/index.html';
-                //     // document.getElementById("text-center").innerHTML = value1.text();
-                //     let htmlStream = value1.text();
-                //     document.write(htmlStream);
-                //     return htmlStream
-                // })
             })
             .catch(error => console.error('Error:', error))
             .then(response => console.log('Success:', response));

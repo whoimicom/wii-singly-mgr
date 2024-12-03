@@ -1,7 +1,7 @@
 server:
   port: 80
   servlet:
-    context-path: /wii-singly-mgr
+    context-path: /wiic-singly-mgr
 spring:
   profiles:
     active: sit
@@ -40,7 +40,7 @@ management:
     health:
       show-details: always
     shutdown:
-      enabled: true
+      access: read_only
   endpoints:
     jmx:
       exposure:
@@ -48,8 +48,9 @@ management:
     web:
       exposure:
         include: '*'
-kim:
-  kin:
+com:
+  whoimi:
     channel-no: '000'
     file-path: /data/file
+    logpath: ${user.home}/data/logs
 

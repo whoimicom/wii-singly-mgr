@@ -36,7 +36,7 @@ import java.util.Optional;
 public class UserInfoController {
     private final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-    private RequestCache requestCache = new HttpSessionRequestCache();
+    private final RequestCache requestCache = new HttpSessionRequestCache();
     @Autowired
     private UserInfoService userInfoService;
 
@@ -76,7 +76,7 @@ public class UserInfoController {
         Optional<Object> principalOpt = Optional.ofNullable(authentication.getPrincipal());
         if (principalOpt.isPresent()) {
             Object principal = principalOpt.get();
-            logger.info(" / " + principal);
+            logger.info(" / {}", principal);
             model.addAttribute("user", principal);
             redirectStrategy.sendRedirect(request, response, "/index.html");
         } else {
@@ -126,7 +126,7 @@ public class UserInfoController {
     }
 
     /**
-     * http://localhost/kk-mgr/testDate?localDate=2021-06-17&localDateTime=2021-06-17 09:39:13&localTime=09:39:13
+     * wiic-singly-mgr/testDate?localDate=2021-06-17&localDateTime=2021-06-17 09:39:13&localTime=09:39:13
      *
      * @return
      */

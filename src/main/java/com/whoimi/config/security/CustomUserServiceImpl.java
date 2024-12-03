@@ -1,5 +1,6 @@
 package com.whoimi.config.security;
 
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import com.whoimi.model.UserInfo;
 import com.whoimi.repository.UserInfoRepository;
@@ -18,15 +19,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author xxm
- * @date 2021/3/30 10:39 自定义UserDetailsService 接口
- */
 @Service
 public class CustomUserServiceImpl implements UserDetailsService {
 
-  @Autowired
-  private UserInfoRepository userInfoRepository;
+  private final UserInfoRepository userInfoRepository;
+
+  public CustomUserServiceImpl(UserInfoRepository userInfoRepository) {
+    this.userInfoRepository = userInfoRepository;
+  }
 
   // 授权过程
   @Override
@@ -40,7 +40,7 @@ public class CustomUserServiceImpl implements UserDetailsService {
           ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
       HttpSession session = request.getSession();
       session.setAttribute("username", username);
-      List<String> permissionCodess = null;
+      List<String> permissionCodess = new ArrayList<>();
       List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
       for (String permissionCode : permissionCodess) {
         if (permissionCode != null && permissionCode != "") {

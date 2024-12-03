@@ -1,19 +1,19 @@
 {
   "properties": [
     {
-      "name": "kim.kin.channel-no",
+      "name": "com.whoimi.channel-no",
       "type": "java.lang.String",
       "description": "Description for kk.channel-no."
     },
     {
-      "name": "kim.kin.file-path",
+      "name": "com.whoimi.file-path",
       "type": "java.lang.String",
       "description": "Description for kk.file-path."
     },
     {
-      "name": "kim.kin.logpath",
+      "name": "com.whoimi.logpath",
       "type": "java.lang.String",
-      "description": "Description for kim.kin.logpath."
+      "description": "Description for com.whoimi.logpath."
     },
     {
       "name": "jwt.base64EncodedSecretKey",
